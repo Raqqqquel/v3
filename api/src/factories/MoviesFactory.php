@@ -1,17 +1,23 @@
 <?php
-// Ampliación 2
+
 namespace App\factories;
 
-use App\DAO\impl\MoviesStaticDAO;
 use App\services\impl\MoviesService;
+
+use App\bdaccess\IConnection;
+use App\DAO\impl\MoviesDBDAO;
 
 class MoviesFactory{
 
-    static function getService(){
+    static function getService(): MoviesService{
         return new MoviesService();
     }
 
-    static function getDAO(): MoviesStaticDAO{
-        return new MoviesStaticDAO();
+    static function getDAO(): MoviesDBDAO{
+        return new MoviesDBDAO();
+    }
+
+    static function getConnection(): IConnection{
+        return new IConnection();
     }
 }

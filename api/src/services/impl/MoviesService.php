@@ -22,5 +22,17 @@ class MoviesService implements IMoviesService {
     function find($id):MovieDTO {
         return MoviesFactory::getDAO()->findById($id);
     }
+    
+    function create($movie){
+        return MoviesFactory::getDAO()::create($movie);
+    }
+
+    function update($id, $movie){
+        return MoviesFactory::getDAO()::update($id, $movie);
+    }
+
+    function delete($id){
+        return MoviesFactory::getDAO()::delete($id);
+    }
 }
     

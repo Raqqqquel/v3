@@ -11,7 +11,7 @@ class MovieDTO implements JsonSerializable{
      * @param $anyo int 
      * @param $duracion int 
      */
-    function __construct(private int $id, private string $titulo, private int $anyo, private int $duracion) 
+    function __construct(private ? int $id, private string $titulo, private int $anyo, private int $duracion) 
     {
         $this->id = $id;
         $this->titulo = $titulo;

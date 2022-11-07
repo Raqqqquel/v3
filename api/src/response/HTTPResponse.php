@@ -4,7 +4,6 @@ namespace App\response;
 
 class HTTPResponse
 {
-
     public static function json(int $code, $data)
     {
         $response = array();

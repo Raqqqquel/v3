@@ -12,6 +12,9 @@ $router->get('/', function() { echo "Bienvenido a la API de películas"; });
 $router->get('/peliculas', 'controllers\MoviesController@all');
 $router->get('/peliculas/(\d+)', 'controllers\MoviesController@find');
 
+$router->delete('/peliculas/(\d+)', 'controllers\MoviesController@delete');
+$router->put('/peliculas/(\d+)', 'controllers\MoviesController@update');
+$router->post('/peliculas', 'controllers\MoviesController@create');
 
 /* Muestra error
  *

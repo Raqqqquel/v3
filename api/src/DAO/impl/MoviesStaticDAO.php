@@ -6,7 +6,7 @@ use App\DAO\IMoviesDAO;
  
 class MoviesStaticDAO implements IMoviesDAO {
  
-    private $movies = [
+    private static $movies = [
         array(
             "id" => 1,
             "titulo" => "El padrino",
@@ -40,7 +40,7 @@ class MoviesStaticDAO implements IMoviesDAO {
      *
      * @return bool
      */
-    function create(MovieDTO $movie): bool {
+    public static function create(MovieDTO $movie): bool {
         return false;
     }
      
@@ -48,10 +48,10 @@ class MoviesStaticDAO implements IMoviesDAO {
      *
      * @return array
      */
-    function read(): array {
+    public static function read(): array {
         $result = array();
         
-        foreach ($this->movies as $movie) {
+        foreach (self::$movies as $movie) {
             array_push($result, new MovieDTO(
                                         $movie['id'], 
                                         $movie['titulo'], 
@@ -60,7 +60,6 @@ class MoviesStaticDAO implements IMoviesDAO {
                                 )
             );
         }
- 
         return $result;
     }
      
@@ -71,14 +70,14 @@ class MoviesStaticDAO implements IMoviesDAO {
      * @return MovieDTO
      */
     
-    function findById(int $id): MovieDTO {
-        foreach ($this->movies as $key => $movies){
-            if($movies['id'] == $id){
+    public static function findById(int $id): MovieDTO {
+        foreach (self::$movies as $movie){
+            if($movie['id'] == $id){
                 return new MovieDTO(
-                    $movies['id'],
-                    $movies['titulo'],
-                    $movies['anyo'],
-                    $movies['duracion'],
+                    $movie['id'],
+                    $movie['titulo'],
+                    $movie['anyo'],
+                    $movie['duracion'],
                 );
             }
         }
@@ -91,7 +90,7 @@ class MoviesStaticDAO implements IMoviesDAO {
      *
      * @return bool
      */
-    function update(int $id, MovieDTO $movie): bool {
+    public static function update(int $id, MovieDTO $movie): bool {
         return false;
     }
      
@@ -101,7 +100,7 @@ class MoviesStaticDAO implements IMoviesDAO {
      *
      * @return bool
      */
-    function delete(int $id): bool {
+    public static function delete(int $id): bool {
         return false;
     }
 }
