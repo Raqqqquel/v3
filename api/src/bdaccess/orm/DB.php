@@ -47,6 +47,10 @@ class DB {
         return self::executeNoResult($sql, $params);
     }
 
+    public static function delete(string $sql, array $params): int {
+        return self::executeNoResult($sql, $params);
+    }
+
     private static function executeNoResult(string $sql, array $params):int {
         $pdo = DBFactory::getConnection()::connect();
         try {

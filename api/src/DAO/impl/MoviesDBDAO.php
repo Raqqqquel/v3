@@ -57,11 +57,7 @@ class MoviesDBDAO implements IMoviesDAO {
     }
      
     static function delete(int $id): bool {
-        $deletedrow = DB::table("peliculas")->delete([
-            'id'=>$id,
-            'titulo'=>$movie->titulo(),
-        ]);
-
+        $deletedrow = DB::table('peliculas')->delete($id);
         return ($deletedrow >0) ? true:false;
     }
 }

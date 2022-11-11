@@ -27,7 +27,7 @@ class QueryBuilder {
         return $this;
     }
 
-    public function where(string $fields, string $condition, array $where) {
+    public function where( array $where) {
         $field = $where[0];
         if (count($where) == 2){
             $condition = '=';
@@ -43,15 +43,15 @@ class QueryBuilder {
         return $this;
     }
 
-    /* public function find(int $id) {
+     /*public function find(int $id) {
         $where = array('id', '*', $id);
         $this->where($where);
 
         return $this->getOne();
     }*/
-
+    
     public function find(int $id) {
-        $this->where('id', '=', $id);
+        $this->where(['id', '=', $id]);
         return $this->getOne();
     }
 
@@ -97,10 +97,9 @@ class QueryBuilder {
         return DB::update($this->sql, $this->params);
     }
 
-    public function delete($params, $id){
-        $this->params[":$params"] = $id;
-        $this->sql = "DELETE FROM $this->table WHERE $params = :$params";
-
+    public function delete( $id){
+        $this->sql = "DELETE FROM $this->table WHERE id = :id";
+        $this->params[":id"] = $id;
         return DB::delete($this->sql, $this->params);
     }
 }

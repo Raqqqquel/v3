@@ -7,7 +7,7 @@ use App\services\impl\MoviesService;
 use App\bdaccess\IConnection;
 use App\DAO\impl\MoviesDBDAO;
 
-class MoviesFactory{
+class MoviesFactory {
 
     static function getService(): MoviesService{
         return new MoviesService();

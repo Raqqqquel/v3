@@ -23,10 +23,6 @@ class MoviesController{
         }
     }
 
-    public function insert(){
-        echo "Hola";
-    }
-
     public function find($id){
         try {
             HTTPResponse::json(200, MoviesFactory::getService()->find($id));
@@ -46,12 +42,11 @@ class MoviesController{
 
     public function delete($id){
         try {
-            $data = json_decode(file_get_contents('php://input'), true);
-            $movie = new MovieDTO(null, $data['titulo'], $data['anyo'], $data['duracion']);
+            //$data = json_decode(file_get_contents('php://input'), true);
+            //$movie = new MovieDTO(null, $data['titulo'], $data['anyo'], $data['duracion']);
             HTTPResponse::json(200, MoviesFactory::getService()->delete($id));
         } catch (\Exception $e){
             HTTPResponse::json(400, $e->getMessage());
            }
-        
     }
 }
