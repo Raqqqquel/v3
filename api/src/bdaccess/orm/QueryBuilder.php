@@ -69,7 +69,8 @@ class QueryBuilder {
         dd($this->sql);
     }
 
-    public function insert(array $data):int {
+    // Post
+    public function insert(array $data):int { 
         $fieldsParams = "";
         foreach ($data as $key => $value) {
             $fieldsParams .= ":$key,"; //:id,:titulo,:anyo,:duracion,
@@ -80,7 +81,7 @@ class QueryBuilder {
         $this->sql = "INSERT INTO $this->table($fieldsName) VALUES ($fieldsParams)";
         return DB::insert($this->sql, $this->params);
     }
-
+    // Put
     public function update(array $data):int{
         foreach($data as $key=>$value){
             $this->params[":$key"] = $value;
